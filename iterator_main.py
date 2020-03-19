@@ -54,3 +54,5 @@ def reverse_text(lines):
 
 
 print(reverse_text(f1))
+f = open("Output/1.txt", "w+")
+f.write(reverse_text(f1))
