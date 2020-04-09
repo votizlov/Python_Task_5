@@ -42,7 +42,7 @@ class ListIterator(Iterator):
         return self._collection[self._cursor]
 
 
-iterator = ListIterator(f1, 0)
+iterator = ListIterator(devices, 0)
 
 
 def main():
@@ -53,6 +53,7 @@ def main():
     priceOfAll = 0
     probableDevices = []
     for d in devices:
+        iterator.next()
         if d.rate >= r and d.memo >= m:
             probableDevices.append(d)
     if not probableDevices.__len__() < k:
