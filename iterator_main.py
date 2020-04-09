@@ -42,36 +42,62 @@ class ListIterator(Iterator):
         return self._collection[self._cursor]
 
 
-iterator = ListIterator(devices, 0)
+
+
+
+import random
+
+from student import Student
+
+
+def findCourceIndex(array, student):
+    for i in range(len(array)):
+        if array[i][0].cource == student.cource:
+            return i
+    return -1
+
+
+coursesWithStudents = []
+f = open("Test input/1.txt", "r")
+f1 = f.readlines()
+for x in f1:
+    line = x.split()
+    stud = Student(line[0], int(line[1]), line[2], int(line[3]))
+    if findCourceIndex(coursesWithStudents, stud) == -1:
+        coursesWithStudents.append([stud])
+    else:
+        coursesWithStudents[findCourceIndex(coursesWithStudents, stud)].append(stud)
+
+iterator = ListIterator(coursesWithStudents, 0)
 
 
 def main():
-    names = []
-    k = int(input("How many devices?"))
-    m = int(input("Min memory"))
-    r = int(input("Min rating"))
-    priceOfAll = 0
-    probableDevices = []
-    for d in devices:
+    output = ""
+    for cource in coursesWithStudents:
         iterator.next()
-        if d.rate >= r and d.memo >= m:
-            probableDevices.append(d)
-    if not probableDevices.__len__() < k:
-        for i in range(k):
-            currentD = probableDevices[0]
-            for d in probableDevices:
-                if d.price < currentD.price:
-                    currentD = d
-            names.append(currentD.name)
-            priceOfAll += currentD.price
-            probableDevices.remove(currentD)
+        bestMales = [Student("", "", "male", 0)]
+        bestFemales = [Student("", "", "female", 0)]
+        for stud in cource:
+            if stud.sex == "male":
+                if stud.avg > bestMales[0].avg:
+                    bestMales.clear()
+                    bestMales.append(stud)
+                elif stud.avg == bestMales[0].avg:
+                    bestMales.append(stud)
+            if stud.sex == "female":
+                if stud.avg > bestFemales[0].avg:
+                    bestFemales.clear()
+                    bestFemales.append(stud)
+                elif stud.avg == bestFemales[0].avg:
+                    bestFemales.append(stud)
+        if bestMales[0].avg > 0 and bestFemales[0].avg > 0:
+            output = output + "Курс: " + str(cource[0].cource) + " " + random.choice(
+                bestFemales).name + " " + random.choice(
+                bestMales).name + "\n"
 
     f = open("Output/1.txt", "w+")
-    f.write(" Price " + str(priceOfAll) + " ")
-    for name in names:
-        f.write(str(name) + ", ")
-    print(priceOfAll)
-    print(names)
+    f.write(output)
+    print(output)
 
 
 main()

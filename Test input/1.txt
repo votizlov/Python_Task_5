@@ -1,0 +1,6 @@
+a 1 female 5
+b 1 male 3
+a1 1 female 4
+b1 1 male 2
+a2 1 female 5
+b2 1 male 4
