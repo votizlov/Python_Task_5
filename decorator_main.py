@@ -1,4 +1,4 @@
-def bread(func):
+def cone(func):
     def wrapper():
         print()
         func()
@@ -17,10 +17,10 @@ def ingredients(func):
     return wrapper
 
 
-def sandwich(food="--ветчина--"):
+def ice_cream(food="--ветчина--"):
     print(food)
 
 
-sandwich()
-sandwich = bread(ingredients(sandwich))
-sandwich()
+ice_cream()
+my_ice_cream = cone(ingredients(ice_cream))
+my_ice_cream()
