@@ -1,26 +1,27 @@
-def cone(func):
+def ice_cream(func):
     def wrapper():
-        print()
         func()
 
-    print("<\______/>")
+    print("СИРОП")
     return wrapper
 
 
 def ingredients(func):
     def wrapper():
-        print("#помидоры#")
+        print("МАРОЖЕНАЕ")
         func()
 
-    print("~салат~")
+    print("СТРУЖКА")
 
     return wrapper
 
 
-def ice_cream(food="--ветчина--"):
+def cone(food="РОЖОК"):
     print(food)
 
 
-ice_cream()
-my_ice_cream = cone(ingredients(ice_cream))
+cone()
+
+print()
+my_ice_cream = ice_cream(ingredients(cone))
 my_ice_cream()
