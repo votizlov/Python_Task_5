@@ -42,7 +42,7 @@ class ListIterator(Iterator):
         return self._collection[self._cursor]
 
 
-iterator = ListIterator(devices, 0)
+iterator = ListIterator(devices, -1)
 
 
 def main():
