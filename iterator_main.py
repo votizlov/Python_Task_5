@@ -68,7 +68,7 @@ for x in f1:
     else:
         coursesWithStudents[findCourceIndex(coursesWithStudents, stud)].append(stud)
 
-iterator = ListIterator(coursesWithStudents, 0)
+iterator = ListIterator(coursesWithStudents, -1)
 
 
 def main():

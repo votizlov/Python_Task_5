@@ -1,26 +1,26 @@
-def bread(func):
+def C(func):
     def wrapper():
-        print()
+        #print()
         func()
 
-    print("<\______/>")
+    print("C")
     return wrapper
 
 
-def ingredients(func):
+def B(func):
     def wrapper():
-        print("#помидоры#")
+        print("B2")
         func()
 
-    print("~салат~")
+    print("B1")
 
     return wrapper
 
 
-def sandwich(food="--ветчина--"):
+def A(food="A"):
     print(food)
 
 
-sandwich()
-sandwich = bread(ingredients(sandwich))
-sandwich()
+A()
+notA = C(B(A))
+notA()
